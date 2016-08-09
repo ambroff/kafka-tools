@@ -25,7 +25,7 @@ class ActionBalanceSize(ActionBalanceModule):
     name = "size"
     helpstr = "Move the largest partitions in the cluster to even the total size on disk per-broker for each replica position"
 
-    def process_cluster(self):
+    def process_cluster(self, topic=None):
         log.info("Starting partition balance by size")
 
         # Figure out the max RF for the cluster

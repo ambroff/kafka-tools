@@ -36,7 +36,7 @@ class ActionBalanceRackAware(ActionBalanceModule):
         random.shuffle(broker_list)
         self._random_brokers = deque(broker_list)
 
-    def process_cluster(self):
+    def process_cluster(self, topic=None):
         log.info("Starting partition balance by rack")
 
         # Check if rack information is set for the cluster

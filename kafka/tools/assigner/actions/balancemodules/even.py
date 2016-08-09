@@ -41,7 +41,7 @@ class ActionBalanceEven(ActionBalanceModule):
                 return False
             return True
 
-    def process_cluster(self):
+    def process_cluster(self, topic=None):
         for topic_name in self.cluster.topics:
             topic = self.cluster.topics[topic_name]
             if not self.check_topic_ok(topic):

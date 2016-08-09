@@ -32,4 +32,4 @@ class ActionBalanceLeaderTests(unittest.TestCase):
         self.args.types = ['leader']
         action = ActionBalanceLeader(self.args, self.cluster)
         action.process_cluster()
-        mock_reorder.assert_called_once_with()
+        mock_reorder.assert_called_once_with(topic=None)

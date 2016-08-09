@@ -24,7 +24,7 @@ class ActionReorder(ActionModule):
     name = "reorder"
     helpstr = "Reelect partition leaders using replica reordering"
 
-    def process_cluster(self):
+    def process_cluster(self, topic=None):
         # Start all the leader counts at zero
         leaders = {}
         for broker in self.cluster.brokers:

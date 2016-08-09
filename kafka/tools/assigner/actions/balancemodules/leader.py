@@ -29,6 +29,6 @@ class ActionBalanceLeader(ActionBalanceModule):
         # This module merely calls the main "reorder" module, so we're going to instantiate a copy of that
         self._reorder = ActionReorder(args, cluster)
 
-    def process_cluster(self):
+    def process_cluster(self, topic=None):
         # Call the reorder module
-        self._reorder.process_cluster()
+        self._reorder.process_cluster(topic=topic)

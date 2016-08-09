@@ -25,7 +25,7 @@ class ActionBalanceCount(ActionBalanceModule):
     name = "count"
     helpstr = "Move the smallest partitions in the cluster to even the partition count per-broker for each replica position"
 
-    def process_cluster(self):
+    def process_cluster(self, topic=None):
         log.info("Starting partition balance by count")
 
         # Figure out the max RF for the cluster and sort all partition lists by size (ascending)

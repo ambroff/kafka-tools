@@ -35,13 +35,16 @@ class ActionBalance(ActionModule):
         for bmodule in args.types:
             self.modules.append(self.balance_types[bmodule](args, cluster))
 
+        self._topic = args.topic
+
     @classmethod
     def _add_args(cls, parser):
         # We'll need to build this list here as well as in the constructor
         balance_actions = get_modules(kafka.tools.assigner.actions.balancemodules, ActionBalanceModule)
         parser.add_argument('-t', '--types', help="Balance types to perform. Multiple may be specified and they will be run in order", required=True,
                             choices=[klass.name for klass in balance_actions], nargs='*')
+        parser.add_argument('--topic', dest='topic', default=None, help="Only balance the specified topic")
 
     def process_cluster(self):
         for bmodule in self.modules:
-            bmodule.process_cluster()
+            bmodule.process_cluster(self._topic)
